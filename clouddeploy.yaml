@@ -1,29 +1,30 @@
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
- name: my-cloud-deploy-app
-description: main application pipeline
+ name: pipe-one-pub
+description: sample pipeline
 serialPipeline:
  stages:
- - targetId: dev
+ - targetId: qsdev
    profiles: []
- - targetId: prod
+ - targetId: qsprod
    profiles: []
 ---
-
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
- name: dev
-description: This is Staging cluster
+ name: qsdev
+description: development cluster
 gke:
- cluster: projects/gcp-playground/locations/asia-east1/clusters/staging-k8s-cluster
+ cluster: projects/my-project1/locations/asia-east1-a/clusters/sanket-public-cluster
 ---
-
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
- name: prod
-description: This is production cluster
+ name: qsprod
+description: production cluster
 gke:
- cluster: projects/gcp-playground/locations/asia-east1-a/clusters/production-k8s-cluster
+ cluster: projects/my-project1/locations/asia-east1-a/clusters/test-production-cluster
+
+
+
